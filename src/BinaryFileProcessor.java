@@ -1,7 +1,5 @@
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +16,7 @@ public class BinaryFileProcessor implements  FileProcessor{
             for(Product x: products){
                 objectOutputStream.writeObject(x);
             }
+            objectOutputStream.writeObject(null);
             objectOutputStream.close();
 
         } catch (IOException e) {
@@ -27,6 +26,21 @@ public class BinaryFileProcessor implements  FileProcessor{
 
     @Override
     public List<Product> load(String fileName) throws IOException {
-        return null;
+        FileInputStream fileInputStream = new FileInputStream(fileName);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        List<Product>products = new ArrayList<>();
+
+        try {
+            Product p = (Product) objectInputStream.readObject();
+            while (p != null) {
+                products.add(p);
+                p =(Product) objectInputStream.readObject();
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return products;
     }
 }

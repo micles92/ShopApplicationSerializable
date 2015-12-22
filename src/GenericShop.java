@@ -6,14 +6,14 @@ import java.util.*;
  */
 public class GenericShop {
     private List<Product> products;
-    private FileProcessor fileProcessor;
+    private DataProcessor dataProcessor;
     private Map<String, Integer>wareHouseState;
 
-    public GenericShop(FileProcessor fileProcessor) {
+    public GenericShop(DataProcessor dataProcessor) {
         products = new ArrayList<>();
         wareHouseState = new HashMap<>();
         //fileProcessor = new TextFileProcessor();
-        this.fileProcessor = fileProcessor;
+        this.dataProcessor = dataProcessor;
 
     }
 
@@ -50,11 +50,11 @@ public class GenericShop {
     }
 
     public void save(){
-        fileProcessor.save("test", products);
+        dataProcessor.save("test", products);
     }
 
-    public void load() throws IOException {
-       products =  fileProcessor.load("test");
+    public void load() throws Exception {
+       products =  dataProcessor.load("test");
     }
 
 }

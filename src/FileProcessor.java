@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Michał on 06.12.2015.
  */
-public interface FileProcessor {
-    void save(String fileName, List<Product> products);
-    List<Product> load(String fileName) throws IOException;
+public interface FileProcessor extends DataProcessor {
+//    void save(String fileName, List<Product> products);
+//    List<Product> load(String fileName) throws IOException;
 }

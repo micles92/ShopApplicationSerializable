@@ -5,7 +5,7 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        GenericShop obj = new GenericShop(new BinaryFileProcessor());
+        GenericShop obj = new GenericShop(new DataBaseProcessor());
 
 
         obj.addProduct(new Computer("Asus", 999, 16, 2.7));
@@ -13,7 +13,7 @@ public class Main {
 
         obj.addProduct(new Phone("Nokia", 66, 4.5, 5.6));
         obj.addProduct(new Phone("Nokia22", 26, 4.3, 3.6));
-//
+
 //        obj.displayDiscount();
 //        //obj.addProduct(new Product("nazwa1", 5.5));
 //        System.out.println(obj);
@@ -23,7 +23,7 @@ public class Main {
 //        //obj.addProduct(new Product("nazwa1", 5.5));
 //        System.out.println(obj);
         obj.save();
-      //  obj.load();
+       // obj.load();
         System.out.println(obj);
 
     }
